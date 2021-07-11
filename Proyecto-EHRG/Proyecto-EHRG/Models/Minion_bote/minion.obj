@@ -1,6 +1,6 @@
 # This file uses meters as units for non-parametric coordinates.
 
-mtllib minion_bote.mtl
+mtllib minion.mtl
 g default
 v -64.249967 39.663585 46.627662
 v -5.249964 39.663585 46.627662
