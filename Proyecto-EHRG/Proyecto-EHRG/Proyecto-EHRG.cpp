@@ -47,7 +47,7 @@ float rot = 0.0f;
 
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
-glm::vec3 PosIni(-95.0f, 1.0f, -45.0f);
+glm::vec3 PosIni(-95.0f, -2.0f, -45.0f);
 bool active;
 
 
@@ -188,6 +188,7 @@ int main()
 	Shader SkyBoxshader("Shaders/SkyBox.vs", "Shaders/SkyBox.frag");
 
 	Model Playa((char*)"Models/Playa/playa.obj");
+	Model Bote((char*)"Models/Minion_bote/minion_bote.obj");
 	//Model PiernaDer((char*)"Models/Personaje/piernader.obj");
 	//Model PiernaIzq((char*)"Models/Personaje/piernaizq.obj");
 	//Model Torso((char*)"Models/Personaje/torso.obj");
@@ -511,14 +512,19 @@ int main()
 
 
 		//Carga de modelo 
-		//Personaje
+		//Playa
 		view = camera.GetViewMatrix();
 		glm::mat4 model(1);
-		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model,glm::vec3(posX,posY,posZ));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Playa.Draw(lightingShader);
+
+		//Bote
+		view = camera.GetViewMatrix();
+		model = glm::translate(model,glm::vec3(-95.0f, 1.0f, -45.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Bote.Draw(lightingShader);
 
 		//Pierna Izq
 		//view = camera.GetViewMatrix();
