@@ -523,7 +523,7 @@ int main()
 
 		//Bote
 		view = camera.GetViewMatrix();
-		model = glm::translate(tmp, glm::vec3(-5.0f, -1.0f, 0.0f));
+		model = glm::translate(tmp, glm::vec3(-350.0f, -30.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Bote.Draw(lightingShader);
 
