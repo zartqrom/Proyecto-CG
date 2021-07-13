@@ -190,6 +190,7 @@ int main()
 	Model Playa((char*)"Models/Playa/playa.obj");
 	Model Bote((char*)"Models/Minion_bote/minion.obj");
 	Model Ala((char*)"Models/Minion_volando/minion.obj");
+	Model Delfin((char*)"Models/Dolphin/dolphin.obj");
 	//Model PiernaDer((char*)"Models/Personaje/piernader.obj");
 	//Model PiernaIzq((char*)"Models/Personaje/piernaizq.obj");
 	//Model Torso((char*)"Models/Personaje/torso.obj");
@@ -533,6 +534,12 @@ int main()
 		model = glm::translate(tmp, glm::vec3(150.0f, 50.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Ala.Draw(lightingShader);
+
+		//Dolphin
+		view = camera.GetViewMatrix();
+		model = glm::translate(tmp, glm::vec3(50.0f, -40.0f, 100.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Delfin.Draw(lightingShader);
 
 		//Pierna Izq
 		//view = camera.GetViewMatrix();
