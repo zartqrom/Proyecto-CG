@@ -50,6 +50,9 @@ glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
 glm::vec3 PosIni(-95.0f, -2.0f, -45.0f);
 bool active;
 
+//Light Control
+float redLight = 1.0f;
+
 
 // Deltatime
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
@@ -428,7 +431,7 @@ int main()
 		// == ==========================
 		// Directional light
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.direction"), -0.2f, -1.0f, -0.3f);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), 1.0f, 1.0f, 1.0f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), redLight, 1.0f, 1.0f);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), 0.4f, 0.4f, 0.4f);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"), 0.5f, 0.5f, 0.5f);
 
@@ -764,6 +767,7 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 		else
 			LightP1 = glm::vec3(0.0f, 0.0f, 0.0f);
 	}
+
 }
 
 void MouseCallback(GLFWwindow *window, double xPos, double yPos)
@@ -863,7 +867,12 @@ void DoMovement()
 	}
 
 
-
+	if (camera.GetPosition().y <= -31){
+		redLight = 0.0f;
+	}
+	else{
+		redLight = 1.0f;
+	}
 
 
 
