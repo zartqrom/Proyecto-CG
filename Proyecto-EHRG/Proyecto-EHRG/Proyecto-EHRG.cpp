@@ -144,7 +144,77 @@ void interpolation(void)
 
 }
 
+void moveBote()
+{
+	//Movimiento del coche
+	if (circuitoALa)
+	{
+		if (recorrido1)
+		{
+			movKitZ += 1.0f;
+			if (movKitZ > 250)
+			{
+				recorrido1 = false;
+				recorrido2 = true;
+				rotKit = 0;
+			}
+		}
+		if (recorrido2)
+		{
+			if (rotKit <= 180)
+			{
+				rotKit += 1;
+				movKitX += 0.5f;
+				if (rotKit <= 90)
+				{
+					movKitZ += 0.25f;
+				}
+				if (rotKit > 90)
+				{
+					movKitZ -= 0.25f;
+				}
+			}
+			if (rotKit == 180)
+			{
+				recorrido2 = false;
+				recorrido3 = true;
 
+			}
+		}
+
+		if (recorrido3)
+		{
+			movKitZ -= 1.0f;
+			if (movKitZ < -100)
+			{
+				recorrido3 = false;
+				recorrido4 = true;
+			}
+		}
+
+		if (recorrido4)
+		{
+			if (rotKit <= 360)
+			{
+				rotKit += 1;
+				movKitX -= 0.5f;
+				if (rotKit <= 270)
+				{
+					movKitZ -= 0.25f;
+				}
+				if (rotKit > 270)
+				{
+					movKitZ += 0.25f;
+				}
+			}
+			if (rotKit == 360)
+			{
+				recorrido4 = false;
+				recorrido1 = true;
+			}
+		}
+	}
+}
 
 
 int main()
@@ -659,75 +729,7 @@ void animacion()
 
 		}
 	
-	//Movimiento del coche
-	if (circuitoALa)
-	{
-		if (recorrido1)
-		{
-			movKitZ += 1.0f;
-			if (movKitZ > 250)
-			{
-				recorrido1 = false;
-				recorrido2 = true;
-				rotKit=0;
-			}
-		}
-		if (recorrido2)
-		{
-			if(rotKit <= 180)
-			{
-				rotKit += 1;
-				movKitX += 0.5f;
-				if (rotKit <= 90)
-				{
-					movKitZ += 0.25f;
-				}
-				if (rotKit > 90)
-				{
-					movKitZ -= 0.25f;
-				}
-			}
-			if (rotKit == 180)
-			{
-				recorrido2 = false;
-				recorrido3 = true;
-
-			}
-		}
-
-		if (recorrido3)
-		{
-			movKitZ -= 1.0f;
-			if (movKitZ < -100)
-			{
-				recorrido3 = false;
-				recorrido4 = true;
-			}
-		}
-
-		if (recorrido4)
-		{
-			if(rotKit <= 360)
-			{
-				rotKit += 1;
-				movKitX -= 0.5f;
-				if (rotKit <= 270)
-				{
-					movKitZ -= 0.25f;
-				}
-				if (rotKit > 270)
-				{
-					movKitZ += 0.25f;
-				}
-			}
-			if (rotKit == 360)
-			{
-				recorrido4 = false;
-				recorrido1 = true;
-
-			}
-		}
-	}
+	moveBote();
 }
 
 
@@ -907,3 +909,4 @@ void DoMovement()
 	}
 
 }
+
