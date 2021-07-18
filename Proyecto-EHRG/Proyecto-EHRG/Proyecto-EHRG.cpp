@@ -54,6 +54,7 @@ float redLight = 1.0f;
 
 //Initial Positions
 glm::vec3 PosIniAla(-95.0f, -2.0f, -45.0f);
+glm::vec3 PosIniBote(-390.0f, -30.0f, 0.0f);
 glm::vec3 PosIni(-95.0f, -2.0f, -45.0f);
 
 // Deltatime
@@ -201,10 +202,9 @@ int main()
 	Shader lampShader("Shaders/lamp.vs", "Shaders/lamp.frag");
 	Shader SkyBoxshader("Shaders/SkyBox.vs", "Shaders/SkyBox.frag");
 
-	Model Ala((char*)"Models/Minion_volando/minion.obj");
-	Model Playa((char*)"Models/Playa/playa.obj");
-	//Model Bote((char*)"Models/Minion_bote/minion.obj");
 	//Model Ala((char*)"Models/Minion_volando/minion.obj");
+	Model Playa((char*)"Models/Playa/playa.obj");
+	Model Bote((char*)"Models/Minion_bote/minion.obj");
 	//Model Delfin((char*)"Models/Dolphin/dolphin.obj");
 	//Model PiernaDer((char*)"Models/Personaje/piernader.obj");
 	//Model PiernaIzq((char*)"Models/Personaje/piernaizq.obj");
@@ -533,10 +533,10 @@ int main()
 		//Ala Delta
 		view = camera.GetViewMatrix();
 		model = glm::mat4(1);
-		model = glm::translate(model, PosIniAla + glm::vec3(movKitX, 0,movKitZ));
+		model = glm::translate(model, PosIniBote + glm::vec3(movKitX, 0,movKitZ));
 		model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Ala.Draw(lightingShader);
+		Bote.Draw(lightingShader);
 
 		//Bote
 		//view = camera.GetViewMatrix();
@@ -665,17 +665,29 @@ void animacion()
 		if (recorrido1)
 		{
 			movKitZ += 1.0f;
-			if (movKitZ > 150)
+			if (movKitZ > 250)
 			{
 				recorrido1 = false;
 				recorrido2 = true;
+				rotKit=0;
 			}
 		}
 		if (recorrido2)
 		{
-			rotKit = 90;
-			movKitX += 1.0f;
-			if (movKitX > 150)
+			if(rotKit <= 180)
+			{
+				rotKit += 1;
+				movKitX += 0.5f;
+				if (rotKit <= 90)
+				{
+					movKitZ += 0.25f;
+				}
+				if (rotKit > 90)
+				{
+					movKitZ -= 0.25f;
+				}
+			}
+			if (rotKit == 180)
 			{
 				recorrido2 = false;
 				recorrido3 = true;
@@ -685,9 +697,8 @@ void animacion()
 
 		if (recorrido3)
 		{
-			rotKit = 180;
 			movKitZ -= 1.0f;
-			if (movKitZ < 0)
+			if (movKitZ < -100)
 			{
 				recorrido3 = false;
 				recorrido4 = true;
@@ -696,22 +707,24 @@ void animacion()
 
 		if (recorrido4)
 		{
-			rotKit = 270;
-			movKitX -= 1.0f;
-			if (movKitX < 0)
+			if(rotKit <= 360)
+			{
+				rotKit += 1;
+				movKitX -= 0.5f;
+				if (rotKit <= 270)
+				{
+					movKitZ -= 0.25f;
+				}
+				if (rotKit > 270)
+				{
+					movKitZ += 0.25f;
+				}
+			}
+			if (rotKit == 360)
 			{
 				recorrido4 = false;
-				recorrido5 = true;
-			}
-		}
-		if (recorrido5)
-		{
-			rotKit = 0;
-			movKitZ += 1.0f;
-			if (movKitZ > 0)
-			{
-				recorrido5 = false;
 				recorrido1 = true;
+
 			}
 		}
 	}
