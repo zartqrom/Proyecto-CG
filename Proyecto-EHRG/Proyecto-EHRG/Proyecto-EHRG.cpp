@@ -47,12 +47,14 @@ float rot = 0.0f;
 
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
-glm::vec3 PosIni(-95.0f, -2.0f, -45.0f);
 bool active;
 
 //Light Control
 float redLight = 1.0f;
 
+//Initial Positions
+glm::vec3 PosIniAla(-95.0f, -2.0f, -45.0f);
+glm::vec3 PosIni(-95.0f, -2.0f, -45.0f);
 
 // Deltatime
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
@@ -93,8 +95,17 @@ glm::vec3 pointLightPositions[] = {
 
 glm::vec3 LightP1;
 
+//Animaci�n del coche
+float movKitX = 0.0;
+float movKitZ = 0.0;
+float rotKit = 0.0;
 
-
+bool circuitoALa = false;
+bool recorrido1 = true;
+bool recorrido2 = false;
+bool recorrido3 = false;
+bool recorrido4 = false;
+bool recorrido5 = false;
 
 void saveFrame(void)
 {
@@ -190,10 +201,11 @@ int main()
 	Shader lampShader("Shaders/lamp.vs", "Shaders/lamp.frag");
 	Shader SkyBoxshader("Shaders/SkyBox.vs", "Shaders/SkyBox.frag");
 
-	Model Playa((char*)"Models/Playa/playa.obj");
-	Model Bote((char*)"Models/Minion_bote/minion.obj");
 	Model Ala((char*)"Models/Minion_volando/minion.obj");
-	Model Delfin((char*)"Models/Dolphin/dolphin.obj");
+	Model Playa((char*)"Models/Playa/playa.obj");
+	//Model Bote((char*)"Models/Minion_bote/minion.obj");
+	//Model Ala((char*)"Models/Minion_volando/minion.obj");
+	//Model Delfin((char*)"Models/Dolphin/dolphin.obj");
 	//Model PiernaDer((char*)"Models/Personaje/piernader.obj");
 	//Model PiernaIzq((char*)"Models/Personaje/piernaizq.obj");
 	//Model Torso((char*)"Models/Personaje/torso.obj");
@@ -503,100 +515,40 @@ int main()
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
-		// Bind diffuse map
-		//glBindTexture(GL_TEXTURE_2D, texture1);*/
-
-		// Bind specular map
-		/*glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, texture2);*/
-
+		//glBindVertexArray(VAO);
 
 		glBindVertexArray(VAO);
+		glm::mat4 model(1);
 		glm::mat4 tmp = glm::mat4(1.0f); //Temp
 
-
-
-		//Carga de modelo 
+		//Carga de modelo
 		//Playa
 		view = camera.GetViewMatrix();
-		glm::mat4 model(1);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model,glm::vec3(posX,posY,posZ));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Playa.Draw(lightingShader);
 
-		//Bote
-		view = camera.GetViewMatrix();
-		model = glm::translate(tmp, glm::vec3(-350.0f, -30.0f, 0.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Bote.Draw(lightingShader);
-
 		//Ala Delta
 		view = camera.GetViewMatrix();
-		model = glm::translate(tmp, glm::vec3(150.0f, 50.0f, 0.0f));
+		model = glm::mat4(1);
+		model = glm::translate(model, PosIniAla + glm::vec3(movKitX, 0,movKitZ));
+		model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Ala.Draw(lightingShader);
 
-		//Dolphin
-		view = camera.GetViewMatrix();
-		model = glm::translate(tmp, glm::vec3(50.0f, -40.0f, 100.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Delfin.Draw(lightingShader);
+		//Bote
+		//view = camera.GetViewMatrix();
+		//model = glm::translate(tmp, glm::vec3(-350.0f, -30.0f, 0.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//Bote.Draw(lightingShader);
 
-		//Pierna Izq
+		//Dolphin
 		//view = camera.GetViewMatrix();
-		//model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::translate(tmp, glm::vec3(50.0f, -40.0f, 100.0f));
 		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//PiernaDer.Draw(lightingShader);
-		////Pie Izq
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BotaDer.Draw(lightingShader);
-//
-		////Pierna Der
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(tmp, glm::vec3(0.5f, 0.0f, -0.1f));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//PiernaIzq.Draw(lightingShader);
-		////Pie Der
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BotaDer.Draw(lightingShader);
-//
-		////Brazo derecho
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::translate(model, glm::vec3(-0.75f, 2.5f, 0));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BrazoDer.Draw(lightingShader);
-//
-		////Brazo Izquierdo
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::translate(model, glm::vec3(0.75f, 2.5f, 0));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BrazoIzq.Draw(lightingShader);
-//
-		////Cabeza
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//Cabeza.Draw(lightingShader);
+		//Delfin.Draw(lightingShader);
 
 
 		glBindVertexArray(0);
@@ -706,7 +658,64 @@ void animacion()
 			}
 
 		}
+	
+	//Movimiento del coche
+	if (circuitoALa)
+	{
+		if (recorrido1)
+		{
+			movKitZ += 1.0f;
+			if (movKitZ > 150)
+			{
+				recorrido1 = false;
+				recorrido2 = true;
+			}
+		}
+		if (recorrido2)
+		{
+			rotKit = 90;
+			movKitX += 1.0f;
+			if (movKitX > 150)
+			{
+				recorrido2 = false;
+				recorrido3 = true;
+
+			}
+		}
+
+		if (recorrido3)
+		{
+			rotKit = 180;
+			movKitZ -= 1.0f;
+			if (movKitZ < 0)
+			{
+				recorrido3 = false;
+				recorrido4 = true;
+			}
+		}
+
+		if (recorrido4)
+		{
+			rotKit = 270;
+			movKitX -= 1.0f;
+			if (movKitX < 0)
+			{
+				recorrido4 = false;
+				recorrido5 = true;
+			}
+		}
+		if (recorrido5)
+		{
+			rotKit = 0;
+			movKitZ += 1.0f;
+			if (movKitZ > 0)
+			{
+				recorrido5 = false;
+				recorrido1 = true;
+			}
+		}
 	}
+}
 
 
 // Is called whenever a key is pressed/released via GLFW
@@ -874,6 +883,14 @@ void DoMovement()
 		redLight = 1.0f;
 	}
 
+	if (keys[GLFW_KEY_I])
+	{
+		circuitoALa = true;
+	}
 
+	if (keys[GLFW_KEY_O])
+	{
+		circuitoALa = false;
+	}
 
 }
