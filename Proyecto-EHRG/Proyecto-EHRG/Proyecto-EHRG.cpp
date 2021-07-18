@@ -97,16 +97,15 @@ glm::vec3 pointLightPositions[] = {
 glm::vec3 LightP1;
 
 //Animaci�n del coche
-float movKitX = 0.0;
-float movKitZ = 0.0;
-float rotKit = 0.0;
+float movBoteX = 0.0;
+float movBoteZ = 0.0;
+float rotBote = 0.0;
 
-bool circuitoALa = false;
-bool recorrido1 = true;
-bool recorrido2 = false;
-bool recorrido3 = false;
-bool recorrido4 = false;
-bool recorrido5 = false;
+bool circuitoBote = false;
+bool recorridoBote1 = true;
+bool recorridoBote2 = false;
+bool recorridoBote3 = false;
+bool recorridoBote4 = false;
 
 void saveFrame(void)
 {
@@ -147,74 +146,75 @@ void interpolation(void)
 void moveBote()
 {
 	//Movimiento del coche
-	if (circuitoALa)
+	if (circuitoBote)
 	{
-		if (recorrido1)
+		if (recorridoBote1)
 		{
-			movKitZ += 1.0f;
-			if (movKitZ > 250)
+			movBoteZ += 1.0f;
+			if (movBoteZ > 250)
 			{
-				recorrido1 = false;
-				recorrido2 = true;
-				rotKit = 0;
+				recorridoBote1 = false;
+				recorridoBote2 = true;
+				rotBote = 0;
 			}
 		}
-		if (recorrido2)
+		if (recorridoBote2)
 		{
-			if (rotKit <= 180)
+			if (rotBote <= 180)
 			{
-				rotKit += 1;
-				movKitX += 0.5f;
-				if (rotKit <= 90)
+				rotBote += 1;
+				movBoteX += 0.5f;
+				if (rotBote <= 90)
 				{
-					movKitZ += 0.25f;
+					movBoteZ += 0.25f;
 				}
-				if (rotKit > 90)
+				if (rotBote > 90)
 				{
-					movKitZ -= 0.25f;
+					movBoteZ -= 0.25f;
 				}
 			}
-			if (rotKit == 180)
+			if (rotBote == 180)
 			{
-				recorrido2 = false;
-				recorrido3 = true;
+				recorridoBote2 = false;
+				recorridoBote3 = true;
 
 			}
 		}
 
-		if (recorrido3)
+		if (recorridoBote3)
 		{
-			movKitZ -= 1.0f;
-			if (movKitZ < -100)
+			movBoteZ -= 1.0f;
+			if (movBoteZ < -100)
 			{
-				recorrido3 = false;
-				recorrido4 = true;
+				recorridoBote3 = false;
+				recorridoBote4 = true;
 			}
 		}
 
-		if (recorrido4)
+		if (recorridoBote4)
 		{
-			if (rotKit <= 360)
+			if (rotBote <= 360)
 			{
-				rotKit += 1;
-				movKitX -= 0.5f;
-				if (rotKit <= 270)
+				rotBote += 1;
+				movBoteX -= 0.5f;
+				if (rotBote <= 270)
 				{
-					movKitZ -= 0.25f;
+					movBoteZ -= 0.25f;
 				}
-				if (rotKit > 270)
+				if (rotBote > 270)
 				{
-					movKitZ += 0.25f;
+					movBoteZ += 0.25f;
 				}
 			}
-			if (rotKit == 360)
+			if (rotBote == 360)
 			{
-				recorrido4 = false;
-				recorrido1 = true;
+				recorridoBote4 = false;
+				recorridoBote1 = true;
 			}
 		}
 	}
 }
+
 
 
 int main()
@@ -603,8 +603,8 @@ int main()
 		//Ala Delta
 		view = camera.GetViewMatrix();
 		model = glm::mat4(1);
-		model = glm::translate(model, PosIniBote + glm::vec3(movKitX, 0,movKitZ));
-		model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, PosIniBote + glm::vec3(movBoteX, 0,movBoteZ));
+		model = glm::rotate(model, glm::radians(rotBote), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Bote.Draw(lightingShader);
 
@@ -900,12 +900,12 @@ void DoMovement()
 
 	if (keys[GLFW_KEY_I])
 	{
-		circuitoALa = true;
+		circuitoBote = true;
 	}
 
 	if (keys[GLFW_KEY_O])
 	{
-		circuitoALa = false;
+		circuitoBote = false;
 	}
 
 }
