@@ -53,7 +53,7 @@ bool active;
 float redLight = 1.0f;
 
 //Initial Positions
-glm::vec3 PosIniAla(-95.0f, -2.0f, -45.0f);
+glm::vec3 PosIniAla(-150.0f, 230.0f, -220.0f);
 glm::vec3 PosIniBote(-390.0f, -30.0f, 0.0f);
 glm::vec3 PosIni(-95.0f, -2.0f, -45.0f);
 
@@ -106,6 +106,22 @@ bool recorridoBote1 = true;
 bool recorridoBote2 = false;
 bool recorridoBote3 = false;
 bool recorridoBote4 = false;
+
+float movAlaY = 0.0;
+float movAlaZ = 0.0;
+float rotAlaZ = 0.0;
+float rotAlaX = 0.0;
+
+bool circuitoAla = false;
+bool recorridoAla1 = true;
+bool recorridoAla2 = false;
+bool recorridoAla3 = false;
+bool recorridoAla4 = false;
+bool recorridoAla5 = false;
+bool recorridoAla6 = false;
+bool recorridoAla7 = false;
+bool recorridoAla8 = false;
+bool recorridoAla9 = false;
 
 void saveFrame(void)
 {
@@ -215,7 +231,133 @@ void moveBote()
 	}
 }
 
-
+void moveAla()
+{
+	//Movimiento del coche
+	if (circuitoAla)
+	{
+		if (recorridoAla1)
+		{
+			movAlaZ += 0.5f;
+			if (movAlaZ > 50)
+			{
+				recorridoAla1 = false;
+				recorridoAla2 = true;
+			}
+		}
+		if (recorridoAla2)
+		{
+			rotAlaX += 0.25f;
+			rotAlaZ += 1.5f;
+			movAlaY += 0.5f;
+			movAlaZ += 0.3f;
+			if (rotAlaX > 45)
+			{
+				recorridoAla2 = false;
+				recorridoAla3 = true;
+			}
+		}
+		if (recorridoAla3)
+		{
+			if(rotAlaX > 0)
+			{
+				rotAlaX -= 0.5f;
+			}
+			if(rotAlaZ < 360)
+			{
+				rotAlaZ += 1.5f;
+			}
+			movAlaZ += 0.5f;
+			if (rotAlaX < 0)
+			{
+				recorridoAla3 = false;
+				recorridoAla4 = true;
+			}
+		}
+		if (recorridoAla4)
+		{
+			if(rotAlaX > -180)
+			{
+				rotAlaX -= 0.5f;
+			}
+			movAlaZ += 0.2f;
+			movAlaY -= 0.7f;
+			if (rotAlaX < -180)
+			{
+				recorridoAla4 = false;
+				recorridoAla5 = true;
+			}
+		}
+		if(recorridoAla5)
+		{
+			if(rotAlaZ < 540)
+			{
+				rotAlaZ += 0.5f;
+			}
+			movAlaZ -= 0.5f;
+			movAlaY += 0.5f;
+			if (rotAlaZ >= 540)
+			{
+				recorridoAla5 = false;
+				recorridoAla6 = true;
+			}
+		}
+		if (recorridoAla6)
+		{
+			if(rotAlaX < 0)
+			{
+				rotAlaX += 0.5f;
+			}
+			movAlaZ -= 0.5f;
+			movAlaY += 0.7f;
+			if (rotAlaX > 0)
+			{
+				recorridoAla6 = false;
+				recorridoAla7 = true;
+			}
+		}
+		if(recorridoAla7)
+		{
+			if(rotAlaZ < 720)
+			{
+				rotAlaZ += 0.5f;
+			}
+			movAlaZ += 0.3f;
+			if (rotAlaZ >= 720)
+			{
+				recorridoAla7 = false;
+				recorridoAla8 = true;
+			}
+		}
+		if (recorridoAla8)
+		{
+			if(rotAlaX > -90)
+			{
+				rotAlaX -= 0.55f;
+			}
+			if (rotAlaX <= -90)
+			{
+				recorridoAla8 = false;
+				recorridoAla9 = true;
+			}
+		}
+		if (recorridoAla9)
+		{
+			if (rotAlaX < 0)
+			{
+				rotAlaX += 0.25f;
+			}
+			movAlaY -= 1.0f;
+			if(movAlaY <= 0)
+			{
+				recorridoAla9 = false;
+				recorridoAla1 = true;
+				rotAlaZ = 0.0;
+				rotAlaX = 0.0;
+			}
+		}
+	}
+}
 
 int main()
 {
@@ -272,7 +414,7 @@ int main()
 	Shader lampShader("Shaders/lamp.vs", "Shaders/lamp.frag");
 	Shader SkyBoxshader("Shaders/SkyBox.vs", "Shaders/SkyBox.frag");
 
-	//Model Ala((char*)"Models/Minion_volando/minion.obj");
+	Model Ala((char*)"Models/Minion_volando/minion.obj");
 	Model Playa((char*)"Models/Playa/playa.obj");
 	Model Bote((char*)"Models/Minion_bote/minion.obj");
 	//Model Delfin((char*)"Models/Dolphin/dolphin.obj");
@@ -596,17 +738,26 @@ int main()
 		view = camera.GetViewMatrix();
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model,glm::vec3(posX,posY,posZ));
-		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Playa.Draw(lightingShader);
+
+		//Bote
+		view = camera.GetViewMatrix();
+		model = glm::mat4(1);
+		model = glm::translate(model, PosIniBote + glm::vec3(movBoteX, 0,movBoteZ));
+		model = glm::rotate(model, glm::radians(rotBote), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Bote.Draw(lightingShader);
 
 		//Ala Delta
 		view = camera.GetViewMatrix();
 		model = glm::mat4(1);
-		model = glm::translate(model, PosIniBote + glm::vec3(movBoteX, 0,movBoteZ));
-		model = glm::rotate(model, glm::radians(rotBote), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, PosIniAla + glm::vec3(0, movAlaY, movAlaZ));
+		model = glm::rotate(model, glm::radians(rotAlaZ), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(rotAlaX), glm::vec3(-1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Bote.Draw(lightingShader);
+		Ala.Draw(lightingShader);
 
 		//Bote
 		//view = camera.GetViewMatrix();
@@ -730,6 +881,7 @@ void animacion()
 		}
 	
 	moveBote();
+	moveAla();
 }
 
 
@@ -901,11 +1053,13 @@ void DoMovement()
 	if (keys[GLFW_KEY_I])
 	{
 		circuitoBote = true;
+		circuitoAla = true;
 	}
 
 	if (keys[GLFW_KEY_O])
 	{
 		circuitoBote = false;
+		circuitoAla = false;
 	}
 
 }
