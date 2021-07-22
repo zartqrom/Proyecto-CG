@@ -56,6 +56,7 @@ float redLight = 1.0f;
 glm::vec3 PosIniAla(-150.0f, 230.0f, -220.0f);
 glm::vec3 PosIniBote(-390.0f, -30.0f, 0.0f);
 glm::vec3 PosIniDelfin(150.0f, -40.0f, 100.0f);
+glm::vec3 PosIniPelota(-40.0f, -10.0f, 20.0f);
 glm::vec3 PosIni(-95.0f, -2.0f, -45.0f);
 
 // Deltatime
@@ -97,7 +98,7 @@ glm::vec3 pointLightPositions[] = {
 
 glm::vec3 LightP1;
 
-//Animacion del coche
+//Animacion de los modelos
 float movBoteX = 0.0;
 float movBoteZ = 0.0;
 float rotBote = 0.0;
@@ -138,6 +139,16 @@ bool recorridoDelfin4 = false;
 bool recorridoDelfin5 = false;
 bool recorridoDelfin6 = false;
 bool recorridoDelfin7 = false;
+
+float movPelotaX = 0.0;
+float movPelotaY = 0.0;
+float rotPelotaY = 0.0;
+
+bool circuitoPelota = false;
+bool recorridoPelota1 = true;
+bool recorridoPelota2 = false;
+bool recorridoPelota3 = false;
+bool recorridoPelota4 = false;
 
 void saveFrame(void)
 {
@@ -482,6 +493,69 @@ void moveDelfin()
 	}
 }
 
+void movePelota()
+{
+	if(circuitoPelota)
+	{
+		if (recorridoPelota1)
+		{
+			if(movPelotaY < 40)
+			{
+				rotPelotaY += 0.5f;
+			}
+			movPelotaY += 1.0f;
+			movPelotaX += 0.25f;
+			if (movPelotaY == 40)
+			{
+				recorridoPelota1 = false;
+				recorridoPelota2 = true;
+			}
+		}
+		if (recorridoPelota2)
+		{
+			if(movPelotaY > 0)
+			{
+				rotPelotaY += 0.5f;
+			}
+			movPelotaY -= 1.0f;
+			movPelotaX += 0.25f;
+			if (movPelotaY == 0)
+			{
+				recorridoPelota2 = false;
+				recorridoPelota3 = true;
+			}
+		}
+		if (recorridoPelota3)
+		{
+			if(movPelotaY < 40)
+			{
+				rotPelotaY -= 0.5f;
+			}
+			movPelotaY += 1.0f;
+			movPelotaX -= 0.25f;
+			if (movPelotaY == 40)
+			{
+				recorridoPelota3 = false;
+				recorridoPelota4 = true;
+			}
+		}
+		if (recorridoPelota4)
+		{
+			if(movPelotaY > 0)
+			{
+				rotPelotaY -= 0.5f;
+			}
+			movPelotaY -= 1.0f;
+			movPelotaX -= 0.25f;
+			if (movPelotaY == 0)
+			{
+				recorridoPelota4 = false;
+				recorridoPelota1 = true;
+			}
+		}
+	}
+}
+
 int main()
 {
 	// Init GLFW
@@ -541,6 +615,7 @@ int main()
 	Model Playa((char*)"Models/Playa/playa.obj");
 	Model Bote((char*)"Models/Minion_bote/minion.obj");
 	Model Delfin((char*)"Models/Dolphin/dolphin.obj");
+	Model Pelota((char*)"Models/Pelota/ball.obj");
 	//Model PiernaDer((char*)"Models/Personaje/piernader.obj");
 	//Model PiernaIzq((char*)"Models/Personaje/piernaizq.obj");
 	//Model Torso((char*)"Models/Personaje/torso.obj");
@@ -891,6 +966,14 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Delfin.Draw(lightingShader);
 
+		//Pelota
+		view = camera.GetViewMatrix();
+		model = glm::mat4(1);
+		model = glm::translate(model, PosIniPelota + glm::vec3(movPelotaX, movPelotaY, 0));
+		model = glm::rotate(model, glm::radians(rotPelotaY), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Pelota.Draw(lightingShader);
+
 		//Bote
 		//view = camera.GetViewMatrix();
 		//model = glm::translate(tmp, glm::vec3(-350.0f, -30.0f, 0.0f));
@@ -1015,6 +1098,7 @@ void animacion()
 	moveBote();
 	moveAla();
 	moveDelfin();
+	movePelota();
 }
 
 
@@ -1188,6 +1272,7 @@ void DoMovement()
 		circuitoBote = true;
 		circuitoAla = true;
 		circuitoDelfin = true;
+		circuitoPelota = true;
 	}
 
 	if (keys[GLFW_KEY_O])
@@ -1195,6 +1280,7 @@ void DoMovement()
 		circuitoBote = false;
 		circuitoAla = false;
 		circuitoDelfin = false;
+		circuitoPelota = false;
 	}
 
 }

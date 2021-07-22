@@ -1,0 +1,134 @@
+newmtl Balls:Beach_Ball
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd BeachBall.png
+Ni 1.45
+Ks 0.50 0.50 0.50
+Ns 324.00
+newmtl Balls:Cricket_Ball
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd Cricket_Ball.png
+Ni 1.45
+Ks 0.22 0.22 0.22
+Ns 225.00
+newmtl Balls:Golf_Ball
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd Golf_Ball.png
+Ni 1.45
+Ks 0.50 0.50 0.50
+Ns 225.00
+newmtl Balls:Magic_Ball
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd M_ball_Alb.png
+Ni 1.45
+Ks 0.50 0.50 0.50
+Ns 225.00
+newmtl Balls:Pixar_Ball
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd Pixar_Ball.png
+Ni 1.45
+Ks 0.40 0.40 0.40
+Ns 324.00
+newmtl Balls:Smoke_Ball
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd Smoke_Ball.png
+Ni 1.45
+Ks 0.50 0.50 0.50
+Ns 225.00
+newmtl Balls:Soccer_Ball
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd Soccer_Ball.png
+Ni 1.45
+Ks 0.29 0.29 0.29
+Ns 141.99
+newmtl Balls:Tennis_Ball
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd Tennis_Ball.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 96.08
+newmtl Balls:V_Ball_1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd obj_itm_beachball_00_alb.png
+Ni 1.45
+Ks 0.00 0.00 0.00
+Ns 247.68
+newmtl Balls:V_Ball_3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd obj_itm_beachball_00_trs.png
+Ni 1.45
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl Balls:V_Ball_5
+illum 4
+Kd 0.59 0.59 0.59
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+Ni 1.45
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl Balls:mat1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd ItmCommonMBallBU0.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl Balls:mat2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd ItmCommonMBallBD0.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl Balls:mat4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd ItmCommonMBallI0.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl Balls:mat7
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd ItmCommonMBallB1.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 10.00
