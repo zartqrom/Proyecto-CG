@@ -126,7 +126,7 @@ bool recorridoAla9 = false;
 
 float movDelfinX = 0.0;
 float movDelfinZ = 0.0;
-float rotDelfin = 0.0;
+float rotDelfinY = 0.0;
 
 bool circuitoDelfin = false;
 bool recorridoDelfin1 = true;
@@ -377,30 +377,30 @@ void moveDelfin()
 	{
 		if (recorridoDelfin1)
 		{
-			movDelfinX -= 1.0f;
-			if (movDelfinX < -180)
+			movDelfinZ -= 1.0f;
+			if (movDelfinZ < -180)
 			{
 				recorridoDelfin1 = false;
 				recorridoDelfin2 = true;
-				rotDelfin = 0;
+				rotDelfinY = 0;
 			}
 		}
 		if (recorridoDelfin2)
 		{
-			if (rotDelfin <= 180)
+			if (rotDelfinY <= 180)
 			{
-				rotDelfin += 1;
-				movDelfinZ += 0.5f;
-				if (rotDelfin <= 90)
+				rotDelfinY += 1;
+				movDelfinX += 0.5f;
+				if (rotDelfinY <= 90)
 				{
-					movDelfinX -= 0.5f;
+					movDelfinZ -= 0.5f;
 				}
-				if (rotDelfin > 90)
+				if (rotDelfinY > 90)
 				{
-					movDelfinX += 0.5f;
+					movDelfinZ += 0.5f;
 				}
 			}
-			if (rotDelfin == 180)
+			if (rotDelfinY == 180)
 			{
 				recorridoDelfin2 = false;
 				recorridoDelfin3 = true;
@@ -410,8 +410,8 @@ void moveDelfin()
 
 		if (recorridoDelfin3)
 		{
-			movDelfinX += 1.0f;
-			if (movDelfinX > 180)
+			movDelfinZ += 1.0f;
+			if (movDelfinZ > 180)
 			{
 				recorridoDelfin3 = false;
 				recorridoDelfin4 = true;
@@ -420,20 +420,20 @@ void moveDelfin()
 
 		if (recorridoDelfin4)
 		{
-			if (rotDelfin <= 360)
+			if (rotDelfinY <= 360)
 			{
-				rotDelfin += 1;
-				movDelfinZ -= 0.5f;
-				if (rotDelfin <= 270)
+				rotDelfinY += 1;
+				movDelfinX -= 0.5f;
+				if (rotDelfinY <= 270)
 				{
-					movDelfinX += 0.5f;
+					movDelfinZ += 0.5f;
 				}
-				if (rotDelfin > 270)
+				if (rotDelfinY > 270)
 				{
-					movDelfinX -= 0.5f;
+					movDelfinZ -= 0.5f;
 				}
 			}
-			if (rotDelfin == 360)
+			if (rotDelfinY == 360)
 			{
 				recorridoDelfin4 = false;
 				recorridoDelfin1 = true;
@@ -454,7 +454,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica 11", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecto CG", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
@@ -845,8 +845,8 @@ int main()
 		//Delfin
 		view = camera.GetViewMatrix();
 		model = glm::mat4(1);
-		model = glm::translate(model, PosIniDelfin + glm::vec3(movDelfinZ, 0, movDelfinX));
-		model = glm::rotate(model, glm::radians(rotDelfin), glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::translate(model, PosIniDelfin + glm::vec3(movDelfinX, 0, movDelfinZ));
+		model = glm::rotate(model, glm::radians(rotDelfinY), glm::vec3(0.0f, -1.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Delfin.Draw(lightingShader);
 
