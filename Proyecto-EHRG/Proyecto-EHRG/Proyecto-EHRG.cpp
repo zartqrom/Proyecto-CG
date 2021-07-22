@@ -143,6 +143,7 @@ bool recorridoDelfin7 = false;
 float movPelotaX = 0.0;
 float movPelotaY = 0.0;
 float rotPelotaY = 0.0;
+float rotPelotaX = 0.0;
 
 bool circuitoPelota = false;
 bool recorridoPelota1 = true;
@@ -505,6 +506,7 @@ void movePelota()
 			}
 			movPelotaY += 1.0f;
 			movPelotaX += 0.25f;
+			rotPelotaX += 2.0f;
 			if (movPelotaY == 40)
 			{
 				recorridoPelota1 = false;
@@ -519,6 +521,7 @@ void movePelota()
 			}
 			movPelotaY -= 1.0f;
 			movPelotaX += 0.25f;
+			rotPelotaX += 2.0f;
 			if (movPelotaY == 0)
 			{
 				recorridoPelota2 = false;
@@ -533,6 +536,7 @@ void movePelota()
 			}
 			movPelotaY += 1.0f;
 			movPelotaX -= 0.25f;
+			rotPelotaX -= 2.0f;
 			if (movPelotaY == 40)
 			{
 				recorridoPelota3 = false;
@@ -547,6 +551,7 @@ void movePelota()
 			}
 			movPelotaY -= 1.0f;
 			movPelotaX -= 0.25f;
+			rotPelotaX -= 2.0f;
 			if (movPelotaY == 0)
 			{
 				recorridoPelota4 = false;
@@ -971,6 +976,7 @@ int main()
 		model = glm::mat4(1);
 		model = glm::translate(model, PosIniPelota + glm::vec3(movPelotaX, movPelotaY, 0));
 		model = glm::rotate(model, glm::radians(rotPelotaY), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotPelotaX), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Pelota.Draw(lightingShader);
 
