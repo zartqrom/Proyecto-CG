@@ -125,14 +125,19 @@ bool recorridoAla8 = false;
 bool recorridoAla9 = false;
 
 float movDelfinX = 0.0;
+float movDelfinY = 0.0;
 float movDelfinZ = 0.0;
 float rotDelfinY = 0.0;
+float rotDelfinX = 0.0;
 
 bool circuitoDelfin = false;
 bool recorridoDelfin1 = true;
 bool recorridoDelfin2 = false;
 bool recorridoDelfin3 = false;
 bool recorridoDelfin4 = false;
+bool recorridoDelfin5 = false;
+bool recorridoDelfin6 = false;
+bool recorridoDelfin7 = false;
 
 void saveFrame(void)
 {
@@ -204,7 +209,6 @@ void moveBote()
 			{
 				recorridoBote2 = false;
 				recorridoBote3 = true;
-
 			}
 		}
 
@@ -378,7 +382,7 @@ void moveDelfin()
 		if (recorridoDelfin1)
 		{
 			movDelfinZ -= 1.0f;
-			if (movDelfinZ < -180)
+			if (movDelfinZ < -80)//180
 			{
 				recorridoDelfin1 = false;
 				recorridoDelfin2 = true;
@@ -387,38 +391,74 @@ void moveDelfin()
 		}
 		if (recorridoDelfin2)
 		{
+			if(rotDelfinX < 180)
+			{
+				rotDelfinX += 2.0f;
+			}
+			movDelfinZ -= 0.25f;
+			movDelfinY += 0.75f;
+			if (rotDelfinX >= 180)
+			{
+				recorridoDelfin2 = false;
+				recorridoDelfin3 = true;
+			}
+		}
+		if (recorridoDelfin3)
+		{
+			if(rotDelfinX < 360)
+			{
+				rotDelfinX += 2.0f;
+			}
+			movDelfinZ -= 0.25f;
+			movDelfinY -= 0.75f;
+			if (rotDelfinX >= 360)
+			{
+				recorridoDelfin3 = false;
+				recorridoDelfin4 = true;
+				rotDelfinX = 0;
+			}
+		}
+		if (recorridoDelfin4)
+		{
+			movDelfinZ -= 1.0f;
+			if (movDelfinZ < -250)
+			{
+				recorridoDelfin4 = false;
+				recorridoDelfin5 = true;
+			}
+		}
+		if (recorridoDelfin5)
+		{
 			if (rotDelfinY <= 180)
 			{
 				rotDelfinY += 1;
 				movDelfinX += 0.5f;
 				if (rotDelfinY <= 90)
 				{
-					movDelfinZ -= 0.5f;
+					movDelfinZ -= 0.25f;
 				}
 				if (rotDelfinY > 90)
 				{
-					movDelfinZ += 0.5f;
+					movDelfinZ += 0.25f;
 				}
 			}
 			if (rotDelfinY == 180)
 			{
-				recorridoDelfin2 = false;
-				recorridoDelfin3 = true;
-
+				recorridoDelfin5 = false;
+				recorridoDelfin6 = true;
 			}
 		}
-
-		if (recorridoDelfin3)
+		if (recorridoDelfin6)
 		{
 			movDelfinZ += 1.0f;
 			if (movDelfinZ > 180)
 			{
-				recorridoDelfin3 = false;
-				recorridoDelfin4 = true;
+				recorridoDelfin6 = false;
+				recorridoDelfin7 = true;
 			}
 		}
 
-		if (recorridoDelfin4)
+		if (recorridoDelfin7)
 		{
 			if (rotDelfinY <= 360)
 			{
@@ -435,7 +475,7 @@ void moveDelfin()
 			}
 			if (rotDelfinY == 360)
 			{
-				recorridoDelfin4 = false;
+				recorridoDelfin7 = false;
 				recorridoDelfin1 = true;
 			}
 		}
@@ -845,8 +885,9 @@ int main()
 		//Delfin
 		view = camera.GetViewMatrix();
 		model = glm::mat4(1);
-		model = glm::translate(model, PosIniDelfin + glm::vec3(movDelfinX, 0, movDelfinZ));
+		model = glm::translate(model, PosIniDelfin + glm::vec3(movDelfinX, movDelfinY, movDelfinZ));
 		model = glm::rotate(model, glm::radians(rotDelfinY), glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotDelfinX), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Delfin.Draw(lightingShader);
 
