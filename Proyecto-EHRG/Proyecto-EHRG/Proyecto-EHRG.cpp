@@ -56,7 +56,8 @@ float redLight = 1.0f;
 glm::vec3 PosIniAla(-150.0f, 230.0f, -220.0f);
 glm::vec3 PosIniBote(-390.0f, -30.0f, 0.0f);
 glm::vec3 PosIniDelfin(150.0f, -40.0f, 100.0f);
-glm::vec3 PosIniPelota(-40.0f, -10.0f, 20.0f);
+glm::vec3 PosIniPelota(-40.0f, -18.0f, 20.0f);
+glm::vec3 PosIniMinionPel1(-56.0f, -23.0f, 27.5f);
 glm::vec3 PosIni(-95.0f, -2.0f, -45.0f);
 
 // Deltatime
@@ -150,6 +151,8 @@ bool recorridoPelota1 = true;
 bool recorridoPelota2 = false;
 bool recorridoPelota3 = false;
 bool recorridoPelota4 = false;
+
+float movMinionPel1Y = 0.0;
 
 void saveFrame(void)
 {
@@ -621,6 +624,7 @@ int main()
 	Model Bote((char*)"Models/Minion_bote/minion.obj");
 	Model Delfin((char*)"Models/Dolphin/dolphin.obj");
 	Model Pelota((char*)"Models/Pelota/ball.obj");
+	Model MinionPel1((char*)"Models/Minion_pelota/minion1.obj");
 	//Model PiernaDer((char*)"Models/Personaje/piernader.obj");
 	//Model PiernaIzq((char*)"Models/Personaje/piernaizq.obj");
 	//Model Torso((char*)"Models/Personaje/torso.obj");
@@ -979,6 +983,14 @@ int main()
 		model = glm::rotate(model, glm::radians(rotPelotaX), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Pelota.Draw(lightingShader);
+
+		//Minion 1 Pelota
+		view = camera.GetViewMatrix();
+		model = glm::mat4(1);
+		model = glm::translate(model, PosIniMinionPel1 + glm::vec3(0, movMinionPel1Y, 0));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		MinionPel1.Draw(lightingShader);
 
 		//Bote
 		//view = camera.GetViewMatrix();
