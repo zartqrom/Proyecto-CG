@@ -59,14 +59,14 @@ glm::vec3 PosIniDelfin(150.0f, -40.0f, 100.0f);
 glm::vec3 PosIniPelota(-40.0f, -18.0f, 20.0f);
 glm::vec3 PosIniMinionPel1(-56.0f, -23.0f, 27.5f);
 glm::vec3 PosIniMinionPel2(-9.0f, -24.6f, 20.5f);
-glm::vec3 PosIni(-95.0f, -2.0f, -45.0f);
+glm::vec3 PosIni(-20.0f, 5.0f, 160.0f);
 
 // Deltatime
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
 
 // Keyframes
-float posX =PosIni.x, posY = PosIni.y, posZ = PosIni.z, rotRodIzq = 0;
+float posX =PosIni.x, posY = PosIni.y, posZ = PosIni.z, rotBraDer, rotBraIzq;
 
 #define MAX_FRAMES 9
 int i_max_steps = 190;
@@ -80,8 +80,11 @@ typedef struct _frame
 	float incX;		//Variable para IncrementoX
 	float incY;		//Variable para IncrementoY
 	float incZ;		//Variable para IncrementoZ
-	float rotRodIzq;
+	float rotBraDer;
+	float rotBraIzq;
 	float rotInc;
+	float rotInc3;
+	float rotInc4;
 
 }FRAME;
 
@@ -165,8 +168,8 @@ void saveFrame(void)
 	KeyFrame[FrameIndex].posY = posY;
 	KeyFrame[FrameIndex].posZ = posZ;
 	
-	KeyFrame[FrameIndex].rotRodIzq = rotRodIzq;
-	
+	KeyFrame[FrameIndex].rotBraIzq = rotBraIzq;
+	KeyFrame[FrameIndex].rotBraDer = rotBraDer;
 
 	FrameIndex++;
 }
@@ -177,7 +180,8 @@ void resetElements(void)
 	posY = KeyFrame[0].posY;
 	posZ = KeyFrame[0].posZ;
 
-	rotRodIzq = KeyFrame[0].rotRodIzq;
+	rotBraIzq = KeyFrame[0].rotBraIzq;
+	rotBraDer = KeyFrame[0].rotBraDer;
 
 }
 
@@ -188,8 +192,8 @@ void interpolation(void)
 	KeyFrame[playIndex].incY = (KeyFrame[playIndex + 1].posY - KeyFrame[playIndex].posY) / i_max_steps;
 	KeyFrame[playIndex].incZ = (KeyFrame[playIndex + 1].posZ - KeyFrame[playIndex].posZ) / i_max_steps;
 	
-	KeyFrame[playIndex].rotInc = (KeyFrame[playIndex + 1].rotRodIzq - KeyFrame[playIndex].rotRodIzq) / i_max_steps;
-
+	KeyFrame[playIndex].rotInc3 = (KeyFrame[playIndex + 1].rotBraIzq - KeyFrame[playIndex].rotBraIzq) / i_max_steps;
+	KeyFrame[playIndex].rotInc4 = (KeyFrame[playIndex + 1].rotBraDer - KeyFrame[playIndex].rotBraDer) / i_max_steps;
 }
 
 void moveBote()
@@ -632,12 +636,9 @@ int main()
 	Model Pelota((char*)"Models/Pelota/ball.obj");
 	Model MinionPel1((char*)"Models/Minion_pelota/minion1.obj");
 	Model MinionPel2((char*)"Models/Minion_pelota/minion2.obj");
-	//Model PiernaDer((char*)"Models/Personaje/piernader.obj");
-	//Model PiernaIzq((char*)"Models/Personaje/piernaizq.obj");
-	//Model Torso((char*)"Models/Personaje/torso.obj");
-	//Model BrazoDer((char*)"Models/Personaje/brazoder.obj");
-	//Model BrazoIzq((char*)"Models/Personaje/brazoizq.obj");
-	//Model Cabeza((char*)"Models/Personaje/cabeza.obj");
+	Model Torso((char*)"Models/Minion_separado/minion_cuerpo.obj");
+	Model BrazoDer((char*)"Models/Minion_separado/minion_manoDer.obj");
+	Model BrazoIzq((char*)"Models/Minion_separado/minion_manoIzq.obj");
 	// Build and compile our shader program
 
 	//Inicializaci�n de KeyFrames
@@ -648,8 +649,11 @@ int main()
 		KeyFrame[i].incX = 0;
 		KeyFrame[i].incY = 0;
 		KeyFrame[i].incZ = 0;
-		KeyFrame[i].rotRodIzq = 0;
+		KeyFrame[i].rotBraIzq = 0;
+		KeyFrame[i].rotBraDer = 0;
 		KeyFrame[i].rotInc = 0;
+		KeyFrame[i].rotInc3 = 0;
+		KeyFrame[i].rotInc4 = 0;
 	}
 
 
@@ -946,13 +950,13 @@ int main()
 		glBindVertexArray(VAO);
 		glm::mat4 model(1);
 		glm::mat4 tmp = glm::mat4(1.0f); //Temp
+		glm::mat4 tmp2 = glm::mat4(1.0f); //Temp
 
 		//Carga de modelo
 		//Playa
 		view = camera.GetViewMatrix();
-		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
-		model = glm::translate(model,glm::vec3(posX,posY,posZ));
-		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0, 1, 0));
+		model = glm::translate(model, glm::vec3(-95.0f, -2.0f, -45.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Playa.Draw(lightingShader);
 
@@ -1007,17 +1011,31 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		MinionPel2.Draw(lightingShader);
 
-		//Bote
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(tmp, glm::vec3(-350.0f, -30.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//Bote.Draw(lightingShader);
+		//Personaje
+		view = camera.GetViewMatrix();
+		model = glm::translate(model, glm::vec3(0, 1, 0));
+		tmp = model = glm::translate(model,glm::vec3(posX,posY,posZ));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Torso.Draw(lightingShader);
 
-		//Dolphin
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(tmp, glm::vec3(50.0f, -40.0f, 100.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//Delfin.Draw(lightingShader);
+		//Brazo derecho
+		view = camera.GetViewMatrix();
+		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-rotBraDer), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(-4.75f, 0.0f, 0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		BrazoDer.Draw(lightingShader);
+
+		//Brazo Izquierdo
+		view = camera.GetViewMatrix();
+		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-rotBraIzq), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(3.75f, 0.0f, 0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		BrazoIzq.Draw(lightingShader);
 
 
 		glBindVertexArray(0);
@@ -1121,7 +1139,8 @@ void animacion()
 				posY += KeyFrame[playIndex].incY;
 				posZ += KeyFrame[playIndex].incZ;
 
-				rotRodIzq += KeyFrame[playIndex].rotInc;
+				rotBraIzq += KeyFrame[playIndex].rotInc3;
+				rotBraDer += KeyFrame[playIndex].rotInc4;
 
 				i_curr_steps++;
 			}
@@ -1226,18 +1245,24 @@ void DoMovement()
 
 	}
 
-	if (keys[GLFW_KEY_2])
+	if (keys[GLFW_KEY_6])
 	{
-		if (rotRodIzq<80.0f)
-			rotRodIzq += 1.0f;
+		if (rotBraIzq<5.0f)
+		{
+			rotBraIzq += 1.0f;
+			rotBraDer += 1.0f;
+		}
+			
 			
 	}
 
-	if (keys[GLFW_KEY_3])
+	if (keys[GLFW_KEY_7])
 	{
-		if (rotRodIzq>-45)
-			rotRodIzq -= 1.0f;
-		
+		if (rotBraIzq>-5)
+		{
+			rotBraIzq -= 1.0f;
+			rotBraDer -= 1.0f;
+		}
 	}
 
 	
