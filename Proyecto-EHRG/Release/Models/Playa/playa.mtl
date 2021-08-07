@@ -1,0 +1,611 @@
+newmtl BucketBlue1:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd BucketBlue.png
+Ni 1.00
+newmtl BucketGreen:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd BucketGreen.png
+Ni 1.00
+newmtl BucketOrange:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd BucketOrange.png
+Ni 1.00
+newmtl BucketPurple:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd BucketPurple.png
+Ni 1.00
+newmtl BucketRed:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd BucketRed.png
+Ni 1.00
+newmtl initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood.jpg
+map_Ka wood.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl list
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd palma.jpg
+map_Ka Map__2_Gradient.tga
+Ni 1.50
+Ks 0.31 0.31 0.31
+Ns 30.00
+newmtl list_2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd palma.jpg
+map_Ka Map__2_Gradient.tga
+Ni 1.50
+Ks 0.31 0.31 0.31
+Ns 30.00
+newmtl pasted__pasted__Bamboo_Stake_Small_02SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__Bamboo_Stake_Small_02SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__Bamboo_Stake_Small_02SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG5
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG5
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__Bamboo_Stake_Small_02SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd Bamboo.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 18.00
+newmtl pasted__phong3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rock.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl pasted__phong26SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd water.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl pasted__phong40SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd umbrella2.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl pasted__phong40SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd umbrella3.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd sand.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong10SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rock.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong17SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd palm.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong18SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd palm.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong25SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd texture-sand.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong27SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rock.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong28SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd letrero.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong29SG
+illum 4
+Kd 0.25 0.08 0.05
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong30SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd techo.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong33SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd diffuse_var_4.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong34SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd diffuse_var_2.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong35SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd diffuse_var_1.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl phong40SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd umbrella4.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl stebel
+illum 4
+Kd 0.07 0.18 0.01
+Ka 0.07 0.18 0.01
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.29 0.29 0.29
+Ns 36.00
+newmtl stebel_2
+illum 4
+Kd 0.38 0.25 0.01
+Ka 0.38 0.25 0.01
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.29 0.29 0.29
+Ns 36.00
+newmtl tobogan:Material__26
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+map_Kd wood.jpg
+Ni 1.50
+Ks 0.49 0.49 0.49
+Ns 10.00
+newmtl tobogan:Material__28
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+map_Kd wood.jpg
+Ni 1.50
+Ks 0.49 0.49 0.49
+Ns 10.00
+newmtl umbrella1:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl umbrella1:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd umbrella1.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl umbrella2:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl umbrella2:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd umbrella2.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl umbrella3:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl umbrella3:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd umbrella4.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl umbrella4:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl umbrella4:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd umbrella1.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl umbrella6:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl umbrella6:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd umbrella3.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl umbrella7:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
+newmtl umbrella7:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd umbrella1.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 18.00
